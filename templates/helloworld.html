@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid</title>
+</head>
+<style type="text/css">
+    body{
+        background-color: black;
+    }
+    .container{
+        margin-top: 0.8vw;
+        margin-bottom: 0.8vw;
+        height: 8vw;
+        border-radius:0.8vw;
+        width:16vw;
+    }
+    h1{
+        text-align: center;
+        font-size: 3vw;
+        color: white;
+    }
+    p{
+        text-align: center;
+        font-size: 1.8vw;
+        color: white;
+    }
+    .heading{
+        font-size: 5vw;
+        margin-top: 2vw;
+    }
+    select{
+        padding: 0.5vw !important;
+        font-size: 2vw !important;
+        font-weight: 600 !important;
+        padding-left: 2vw !important;
+        width: 25vw !important;
+        -webkit-appearance: menulist !important; 
+    }
+    .form{
+        margin-top: 3vw;
+    }
+    .btn-danger{
+        padding: 0.5vw ;
+        font-size: 2vw ;
+        font-weight: 400;
+        width:10vw;
+    }
+    .country-name{
+        margin-top:7vw;
+    }
+    .credit{
+        color: grey;
+        margin-top:6vw;
+        font-size:1.5vw;
+    }
+    @media (max-width: 767px) {
+        select{
+            width: 32vw !important;
+            padding: 0.6vw !important;
+            font-size: 3vw !important;
+            border-radius: 0.8vw !important;
+        }
+        .form{
+            margin-top: 4.5vw !important;
+        }
+        .btn-danger{
+            width:13vw !important;
+            padding: 0.6vw !important;
+            font-size: 3vw !important;
+            border-radius: 0.8vw !important;
+       }
+       .heading{
+            font-size: 7vw !important;
+            padding: 1vw;
+        }
+        .container{
+            width: 25vw !important;
+            height: 13vw !important;
+        }
+        h1{
+            font-size: 5vw !important;
+        }
+        p{
+            font-size: 3vw;
+        }
+        .country-name{
+            margin-top:10vw !important;
+        }
+        .credit{
+            margin-top:10vw !important;
+            font-size:2.7vw !important;
+        }
+    }
+    
+</style>
+<body>
+    <div class="container-fluid">
+    <h1 class="heading"><span style="color: red;">COVID-19</span> WORLDWIDE DATA</h1>
+
+    <form method="POST" action="" class="d-flex justify-content-center align-items-center form"> 
+        {% csrf_token %}
+        <select class="form-control" name="selectedcountry">
+            {% for country in mylist %}
+            <option>{{country}}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" class="btn btn-danger" name="">
+    </form>
+
+    <h1 class="country-name">{{selectedcountry}}</h1>
+
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="container" style="background-color:orange;">
+            <h1 style="color:black">{{total}}</h1>
+            <p style="color:black;">Total Cases</p>
+        </div>
+        <div class="container" style="background-color:green;">
+            <h1 >{{recovered}}</h1>
+            <p>Recovered</p>
+        </div>
+        <div class="container" style="background-color:yellow">
+            <h1 style="color:black">{{active}}</h1>
+            <p style="color:black;">Active</p>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center">
+        <div class="container" style="background-color:skyblue">
+            <h1 style="color:black">{{new}}</h1>
+            <p style="color:black;">New</p>
+        </div>
+        <div class="container" style="background-color:grey">
+            <h1>{{deaths}}</h1>
+            <p>Deaths</p>
+        </div>
+        <div class="container" style="background-color:red">
+            <h1>{{critical}}</h1>
+            <p>Critical</p>
+        </div>
+    </div>
+    <p class="credit">Developed by <span style="color: white">Akanksha Priya</span></p>
+    </div>
+</body>
+</html>
